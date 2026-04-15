@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head><style>
+  body { margin: 0; display: flex; flex-direction: column; align-items: center; background: #eee; }
+  .map-container-svg { position: relative; width: 900px; display: inline-block; background: white; margin-top: 20px;}
+  img { width: 100%; display: block; }
+  #info { position: fixed; top: 10px; left: 10px; background: rgba(0,0,0,0.8); color: white; padding: 10px; font-family: monospace; }
+  .pointer { position: absolute; width:10px; height: 10px; background: red; border-radius: 50%; transform: translate(-50%, -50%); pointer-events:none;}
+</style></head>
+<body>
+  <div id="info">Click the map to see coordinates</div>
+  <div class="map-container-svg" id="mapbox">
+    <img src="assets/images/nigeria.svg" id="mapimg">
+  </div>
+  <script>
+    const box = document.getElementById('mapbox');
+    const info = document.getElementById('info');
+    box.addEventListener('click', (e) => {
+      const rect = box.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const xp = ((x / rect.width) * 100).toFixed(1);
+      const yp = ((y / rect.height) * 100).toFixed(1);
+      
+      const p = document.createElement('div');
+      p.className = 'pointer';
+      p.style.left = xp + '%';
+      p.style.top = yp + '%';
+      box.appendChild(p);
+      
+      info.innerHTML = `Clicked! Left: ${xp}%, Top: ${yp}%<br>Please relay this to the AI.`;
+      console.log(`left: ${xp}%; top: ${yp}%;`);
+    });
+  </script>
+</body>
+</html>

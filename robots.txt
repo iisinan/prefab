@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /login.html
+Disallow: /css/admin.css
+Disallow: /js/admin.js
+
+Sitemap: https://prefabtech.com.ng/sitemap.xml

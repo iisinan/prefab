@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Not Found | Prefab Technologies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #2ecc71;
+            --dark: #0f172a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: var(--dark);
+        }
+
+        .error-scene {
+            position: relative;
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 10;
+        }
+
+        .error-code {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15rem;
+            font-weight: 800;
+            line-height: 1;
+            margin: 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            letter-spacing: -10px;
+        }
+
+        .error-code::after {
+            content: '404';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.3;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .message-box {
+            margin-top: -2rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        p {
+            font-size: 1.15rem;
+            color: #64748b;
+            margin-bottom: 3rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 16px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 86, 179, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            background: #004494;
+            box-shadow: 0 15px 30px rgba(0, 86, 179, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 86, 179, 0.05);
+            transform: translateY(-5px);
+        }
+
+        /* Abstract Engineering Background Parts */
+        .decoration {
+            position: absolute;
+            z-index: 1;
+            opacity: 0.05;
+            color: var(--primary);
+            pointer-events: none;
+        }
+
+        .gear {
+            font-size: 20rem;
+            top: -5rem;
+            right: -10rem;
+            animation: rotate 20s linear infinite;
+        }
+
+        .compass {
+            font-size: 15rem;
+            bottom: -5rem;
+            left: -5rem;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .error-code { font-size: 10rem; }
+            h2 { font-size: 1.8rem; }
+            .action-btns { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <i class="fa-solid fa-gear decoration gear"></i>
+    <i class="fa-solid fa-compass-drafting decoration compass"></i>
+
+    <div class="error-scene">
+        <h1 class="error-code">404</h1>
+        <div class="message-box">
+            <h2>Route Optimization Failed</h2>
+            <p>The engineering path you are looking for has either been decommissioned or moved to a more sustainable location. Let's get you back on track.</p>
+            <div class="action-btns">
+                <a href="index.html" class="btn btn-primary"><i class="fa-solid fa-house"></i> Back to HQ</a>
+                <a href="index.html#contact" class="btn btn-outline"><i class="fa-solid fa-headset"></i> Support Desk</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

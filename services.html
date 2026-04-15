@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Portfolio | Prefab Technologies Limited</title>
+    <meta name="description" content="Explore our specialized services in sustainable engineering, ICT solutions, and renewable energy infrastructure.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        :root {
+            --service-accent: var(--primary-green);
+        }
+
+        .service-detail-hero {
+            height: 60vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(0, 86, 179, 0.85), rgba(0, 86, 179, 0.95)), url('/Users/sinan/.gemini/antigravity/brain/1b71469c-191a-45d7-aca6-e065519b262e/service_architecture_engineering_1776199133338.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-shapes div {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .service-type-badge {
+            background: rgba(46, 204, 113, 0.2);
+            color: var(--primary-green);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .service-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .service-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .detail-card {
+            background: white;
+            padding: 5rem;
+            border-radius: 30px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.1);
+            margin-top: -120px;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 5rem;
+        }
+
+        .content-section h2 {
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-green);
+            border-radius: 2px;
+        }
+
+        .content-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #4b5563;
+            margin-bottom: 3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 15px;
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            background: white;
+        }
+
+        .feature-item i {
+            color: var(--primary-green);
+            font-size: 1.4rem;
+            margin-top: 3px;
+        }
+
+        .feature-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--primary-blue);
+        }
+
+        .feature-item p {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .sidebar-box {
+            background: #f3f4f6;
+            padding: 3rem;
+            border-radius: 20px;
+            position: sticky;
+            top: 120px;
+        }
+
+        .impact-metric {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .impact-metric:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            display: block;
+        }
+
+        .metric-label {
+            font-weight: 600;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-blue), #004494);
+            padding: 4rem;
+            border-radius: 25px;
+            text-align: center;
+            margin-top: 5rem;
+            color: white;
+            box-shadow: 0 30px 60px rgba(0, 86, 179, 0.3);
+        }
+
+        .cta-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-box p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Dark Mode Overrides */
+        body.dark-mode .detail-card {
+            background: #111827;
+            border-color: rgba(255,255,255,0.05);
+        }
+
+        body.dark-mode .content-text { color: #9ca3af; }
+        body.dark-mode .feature-item { background: #1e293b; }
+        body.dark-mode .feature-item:hover { background: #1f2937; }
+        body.dark-mode .sidebar-box { background: #1e293b; }
+        body.dark-mode .impact-metric { border-color: rgba(255,255,255,0.05); }
+
+        @media (max-width: 1024px) {
+            .detail-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .sidebar-box { position: static; }
+            .service-title { font-size: 3rem; }
+            .detail-card { padding: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .feature-grid { grid-template-columns: 1fr; }
+            .service-title { font-size: 2.5rem; }
+            .service-detail-hero { height: 50vh; }
+        }
+    </style>
+</head>
+<body>
+    <div id="scrollProgress"></div>
+    
+    <nav class="navbar scrolled">
+        <div class="container">
+            <a href="index.html" class="logo-image">
+                <img src="assets/images/logo.png" alt="Prefab Technologies">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="#" id="themeToggle" class="theme-toggle"><i class="fa-solid fa-moon"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="service-detail-hero" id="serviceHero">
+        <div class="hero-shapes">
+            <div style="width: 300px; height: 300px; top: -100px; left: -100px;"></div>
+            <div style="width: 200px; height: 200px; bottom: -50px; right: -50px;"></div>
+        </div>
+        <div class="container" style="position: relative; z-index: 5;">
+            <div id="serviceBadge" class="service-type-badge">Engineering Excellence</div>
+            <h1 id="serviceTitle" class="service-title">Architectural Precision</h1>
+            <p id="serviceSubtitle" class="service-subtitle">Master-planning the future of Nigerian urban transit and sustainable systems.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="detail-card">
+            <div class="detail-grid">
+                <div class="content-section">
+                    <h2 id="contentHeading">The Engineering Approach</h2>
+                    <div id="serviceContent" class="content-text">
+                        <!-- Injected -->
+                    </div>
+
+                    <h3>Core Competencies</h3>
+                    <div class="feature-grid" id="featureList">
+                        <!-- Injected -->
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-box">
+                        <h3 style="margin-bottom: 2rem; color: var(--primary-blue);">Service Impact</h3>
+                        <div id="impactMetrics">
+                            <!-- Injected -->
+                        </div>
+                        
+                        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.1);">
+                            <h4 style="margin-bottom: 1rem; font-size: 1rem;">Relevant Standards</h4>
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                <span style="background: white; padding: 5px 12px; border-radius: 5px; font-size: 0.75rem; font-weight: 700; color: #666; border: 1px solid #ddd;">ISO 9001:2015</span>
+                                <span style="background: white; padding: 5px 12px; border-radius: 5px; font-size: 0.75rem; font-weight: 700; color: #666; border: 1px solid #ddd;">LEED SILVER</span>
+                                <span style="background: white; padding: 5px 12px; border-radius: 5px; font-size: 0.75rem; font-weight: 700; color: #666; border: 1px solid #ddd;">COREN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <h2>Ready to Start Your Project?</h2>
+                <p>Consult with our lead engineers today to bring your vision to life with sustainable technology.</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="index.html#contact" class="btn btn-primary" style="background: white; color: var(--primary-blue);">Inquire Now</a>
+                    <a href="assets/downloads/prefab_profile.pdf" class="btn btn-outline" style="border-color: white; color: white;">Download Profile</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p>&copy; <span id="copyrightYear"></span> Prefab Technologies Limited. All rights reserved.</p>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="index.html" style="color: white; font-size: 0.9rem;">Back to Home</a>
+                    <a href="privacy.html" style="color: white; font-size: 0.9rem;">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        const serviceRepository = {
+            design: {
+                badge: "Engineering Excellence",
+                title: "Design & Engineering",
+                subtitle: "Advanced blueprints for sustainable infrastructure and terminal ecosystems.",
+                heading: "Visionary Engineering",
+                content: "At Prefab Technologies, we believe that every great structure begins with an impeccable plan. Our design and engineering department specializes in the architectural and structural conceptualization of modern transport terminals, corporate facilities, and sustainable urban systems. We utilize cutting-edge Building Information Modeling (BIM) to ensure that every project is optimized for both durability and efficiency.",
+                features: [
+                    { title: "Architectural Planning", desc: "Sustainable concepts for urban mobility.", icon: "fa-pencil-ruler" },
+                    { title: "Structural Engineering", desc: "Heavy-duty infrastructure calculation.", icon: "fa-drafting-compass" },
+                    { title: "MEP Integration", desc: "Smart mechanical, electrical & plumbing.", icon: "fa-bolt" },
+                    { title: "3D BIM Modeling", desc: "Complete digital twins for precision.", icon: "fa-cube" }
+                ],
+                metrics: [
+                    { value: "50+", label: "Masterplans Completed" },
+                    { value: "0", label: "Structural Failures" },
+                    { value: "15%", label: "Average Material Savings" }
+                ],
+                heroImg: "assets/images/hero_bg.png"
+            },
+            ict: {
+                badge: "Smart Systems",
+                title: "ICT Solutions",
+                subtitle: "Driving intelligence into Nigeria's transportation and logistics sector.",
+                heading: "Digital Transformation",
+                content: "Infrastructure is no longer just concrete and steel; it is data and connectivity. Our ICT division develops the 'nervous system' for modern transit. From cloud-based fleet monitoring to secure automated fare collection, we build the tech that powers revenue protection and operational efficiency for government and private operators alike.",
+                features: [
+                    { title: "Fleet Management", desc: "Real-time tracking and telematics.", icon: "fa-route" },
+                    { title: "Smart Ticketing", desc: "Secure automated fare systems.", icon: "fa-ticket" },
+                    { title: "IoT Analytics", desc: "Big data for transit optimization.", icon: "fa-microchip" },
+                    { title: "Security Systems", desc: "Advanced surveillance & monitoring.", icon: "fa-shield-halved" }
+                ],
+                metrics: [
+                    { value: "200+", label: "Units Tracked Daily" },
+                    { value: "99.9%", label: "System Uptime" },
+                    { value: "30%", label: "Revenue Leakage Reduction" }
+                ],
+                heroImg: "assets/images/project_ict.png"
+            },
+            renewable: {
+                badge: "Sustainability",
+                title: "Renewable Energy",
+                subtitle: "Pioneering the transition to clean mobility and green infrastructure.",
+                heading: "Future-Proof Power",
+                content: "Energy is the lifeblood of progress. Prefab Technologies is at the forefront of the renewable energy revolution in Nigeria. We specialize in the conversion of traditional fleets to Compressed Natural Gas (CNG), solar grid integration for terminals, and the implementation of Energy Storage Systems (ESS) to ensure 24/7 reliability without carbon costs.",
+                features: [
+                    { title: "CNG Conversion", desc: "Eco-friendly fuel alternative systems.", icon: "fa-gas-pump" },
+                    { title: "Solar Integration", desc: "Commercial-scale solar PV designs.", icon: "fa-sun" },
+                    { title: "Battery Storage", desc: "Off-grid reliability for infrastructure.", icon: "fa-battery-full" },
+                    { title: "EV Ready", desc: "Electric vehicle charging ecosystems.", icon: "fa-plug-circle-bolt" }
+                ],
+                metrics: [
+                    { value: "3m+", label: "KG Carbon Emissions Saved" },
+                    { value: "45%", label: "Fuel Cost Savings" },
+                    { value: "12", label: "Solarized Terminals" }
+                ],
+                heroImg: "assets/images/about_buses.png"
+            },
+            consulting: {
+                badge: "Strategy & Advisory",
+                title: "Engineering Consulting",
+                subtitle: "Strategic guidance for complex infrastructure and industrial projects.",
+                heading: "Expert Advisory",
+                content: "Our consulting team provides the strategic clarity needed to navigate the complexities of modern engineering. We offer specialized services in project feasibility, risk management, and technical audit. Whether you are a government entity planning a transit hub or a private developer optimizing an energy grid, our senior consultants ensure your project is technically sound and financially viable.",
+                features: [
+                    { title: "Feasibility Studies", desc: "Commercial and technical viability analysis.", icon: "fa-chart-pie" },
+                    { title: "Technical Audits", desc: "Rigorous evaluation of existing systems.", icon: "fa-clipboard-check" },
+                    { title: "Regulatory Compliance", desc: "Navigating Nigerian and Int'l standards.", icon: "fa-balance-scale" },
+                    { title: "Process Optimization", desc: "Lean industrial engineering strategies.", icon: "fa-cogs" }
+                ],
+                metrics: [
+                    { value: "500+", label: "Consultation Hours" },
+                    { value: "N2B+", label: "CapEx Optimized" },
+                    { value: "100%", label: "Compliance Success" }
+                ],
+                heroImg: "assets/images/project_terminal.png"
+            },
+            project_management: {
+                badge: "Operational Excellence",
+                title: "Project Management",
+                subtitle: "Ensuring timely, cost-effective, and quality-driven engineering delivery.",
+                heading: "Precision Execution",
+                content: "At Prefab Technologies, we don't just design; we deliver. Our project management office utilizes advanced agile methodologies and strict quality control protocols to manage multi-billion Naira infrastructure projects. From groundbreaking to commissioning, we oversee every supply chain and onsite operation to ensure absolute adherence to timelines and safety standards.",
+                features: [
+                    { title: "Timeline Management", desc: "Critical path analysis for timely delivery.", icon: "fa-clock" },
+                    { title: "Quality Assurance", desc: "Rigorous standards for every component.", icon: "fa-shield-check" },
+                    { title: "Cost Control", desc: "Optimizing CapEx and OpEx efficiency.", icon: "fa-money-bill-trend-up" },
+                    { title: "Risk Mitigation", desc: "Proactive identification of project bottlenecks.", icon: "fa-triangle-exclamation" }
+                ],
+                metrics: [
+                    { value: "100%", label: "On-Time Delivery" },
+                    { value: "25+", label: "Projects Supervised" },
+                    { value: "N10B+", label: "Project Value Managed" }
+                ],
+                heroImg: "assets/images/project_terminal.png"
+            }
+        };
+
+        window.addEventListener('load', () => {
+            const params = new URLSearchParams(window.location.search);
+            const type = params.get('type') || 'design';
+            const data = serviceRepository[type];
+
+            try {
+                if (data) {
+                    // Set Header
+                    document.getElementById('serviceBadge').innerText = data.badge;
+                    document.getElementById('serviceTitle').innerText = data.title;
+                    document.getElementById('serviceSubtitle').innerText = data.subtitle;
+                    document.getElementById('contentHeading').innerText = data.heading;
+                    document.getElementById('serviceContent').innerHTML = `<p>${data.content}</p>`;
+                
+                if (data.heroImg) {
+                    document.getElementById('serviceHero').style.backgroundImage = `linear-gradient(rgba(0, 86, 179, 0.85), rgba(0, 86, 179, 0.95)), url('${data.heroImg}')`;
+                }
+
+                // Inject Features
+                const featContainer = document.getElementById('featureList');
+                data.features.forEach(f => {
+                    featContainer.innerHTML += `
+                        <div class="feature-item">
+                            <i class="fa-solid ${f.icon}"></i>
+                            <div>
+                                <h4>${f.title}</h4>
+                                <p>${f.desc}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                // Inject Metrics
+                const metricContainer = document.getElementById('impactMetrics');
+                data.metrics.forEach(m => {
+                    metricContainer.innerHTML += `
+                        <div class="impact-metric">
+                            <span class="metric-value">${m.value}</span>
+                            <span class="metric-label">${m.label}</span>
+                        </div>
+                    `;
+                });
+                
+                
+                // Set Footer Year
+                const yearEl = document.getElementById('copyrightYear');
+                if (yearEl) yearEl.innerText = new Date().getFullYear();
+            }
+            } catch (err) {
+                console.error("Service Data Injection Error:", err);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Prefab Technologies Limited</title>
+    <meta name="description" content="Frequently Asked Questions about Prefab Technologies Limited's services and operations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .legal-hero {
+            height: 40vh;
+            min-height: 300px;
+            background: linear-gradient(135deg, rgba(0, 86, 179, 0.9), rgba(0, 68, 148, 0.95)), url('assets/images/hero_bg.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+        .legal-hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+        .legal-hero p { font-size: 1.1rem; opacity: 0.9; }
+        .legal-content {
+            max-width: 800px;
+            margin: -60px auto 5rem;
+            background: white;
+            padding: 4rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+            line-height: 1.8;
+        }
+        body.dark-mode .legal-content { background: #1e293b; color: white; }
+    </style>
+</head>
+<body>
+    <nav class="navbar scrolled">
+        <div class="container">
+            <a href="index.html" class="logo-image">
+                <img src="assets/images/logo.png" alt="Prefab Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="legal-hero">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about our operations and services.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="legal-content">
+            <div class="faq-search" style="margin-bottom: 2rem;">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="faqSearch" placeholder="Type your question (e.g. CNG, Lagos, ICT)...">
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What areas do you cover in Nigeria?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Currently, we have major operations in Kaduna and Abuja, but our consultancy and engineering services are available nationwide across all 36 states.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How cost-effective are CNG buses?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>CNG fuel is significantly cheaper than diesel, offering up to 25-30% savings in operational costs while reducing carbon emissions by over 40%.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you support local state governments?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we specialize in government-level infrastructure partnerships, providing end-to-end management for transit and smart city initiatives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p>&copy; <span id="copyrightYear"></span> Prefab Technologies Limited. All rights reserved.</p>
+                <p><a href="index.html" style="color: var(--primary-green);">Return to Homepage</a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

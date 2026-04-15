@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Access | Prefab Technologies Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #2ecc71;
+            --dark: #0f172a;
+            --glass: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--dark);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(0, 86, 179, 0.4) 100%);
+            z-index: 1;
+        }
+
+        .bg-mesh {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(at 0% 0%, hsla(210,100%,20%,1) 0, transparent 50%), 
+                              radial-gradient(at 50% 0%, hsla(150,100%,20%,1) 0, transparent 50%), 
+                              radial-gradient(at 100% 0%, hsla(210,100%,20%,1) 0, transparent 50%);
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .login-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .login-card {
+            background: var(--glass);
+            padding: 3.5rem;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .logo-area {
+            margin-bottom: 2.5rem;
+        }
+
+        .logo-area img {
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .logo-area h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-area span {
+            color: var(--secondary);
+        }
+
+        .welcome-text {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+            margin-left: 4px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 14px 16px 14px 48px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-sizing: border-box;
+            background: #f8fafc;
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.1);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 15px -3px rgba(0, 86, 179, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+
+        .btn-login:hover {
+            background: #004494;
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 86, 179, 0.4);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .footer-links {
+            margin-top: 2.5rem;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #475569;
+            margin-top: 1.5rem;
+        }
+
+        .security-badge i {
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-mesh"></div>
+    <div class="bg-video-overlay"></div>
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo-area">
+                <img src="assets/images/logo.png" alt="Prefab Logo">
+                <h1>Prefab<span>Admin</span></h1>
+            </div>
+            
+            <p class="welcome-text">Administrative Authority Required. Please authenticate to manage infrastructure services.</p>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Corporate Identity (Email)</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="email" placeholder="admin@prefabtech.com.ng" required autocomplete="username">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Access Credential (Password)</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login" id="loginBtn">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Authenticate Session
+                </button>
+            </form>
+
+            <div class="security-badge">
+                <i class="fa-solid fa-circle-check"></i>
+                Multi-Factor AES-256 Encryption Active
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Return to Public Site</a>
+                <span style="margin: 0 10px;">•</span>
+                <a href="#">Forgot Access?</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('loginBtn');
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Credential Validation
+            if (email === 'sinanismailaidris@gmail.com' && password === 'Sinan3367#') {
+                btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Establishing Secure Tunnel...';
+                btn.style.background = '#2ecc71';
+                btn.style.boxShadow = '0 10px 15px -3px rgba(46, 204, 113, 0.3)';
+                
+                sessionStorage.setItem('isAdminLoggedIn', 'true');
+                
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-solid fa-lock-open"></i> Access Granted';
+                    setTimeout(() => {
+                        window.location.href = 'admin.html';
+                    }, 800);
+                }, 1500);
+            } else {
+                btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Invalid Credentials';
+                btn.style.background = '#e74c3c';
+                btn.style.boxShadow = '0 10px 15px -3px rgba(231, 76, 60, 0.3)';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-solid fa-shield-halved"></i> Authenticate Session';
+                    btn.style.background = '#0056b3';
+                    btn.style.boxShadow = '0 10px 15px -3px rgba(0, 86, 179, 0.3)';
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>

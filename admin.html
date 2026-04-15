@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefab Admin | Content Management System</title>
+    <script>
+        // Secure Session Check
+        if (!sessionStorage.getItem('isAdminLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMessage">Changes saved successfully!</span>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/images/logo.png" alt="Prefab Tech Logo" class="admin-logo">
+            <h2>Admin Panel</h2>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" data-panel="overview">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <span>Overview</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-panel="hero">
+                    <i class="fa-solid fa-desktop"></i>
+                    <span>Hero Section</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-panel="vision">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <span>Vision & Values</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-panel="about">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>About Us</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-panel="services">
+                    <i class="fa-solid fa-gears"></i>
+                    <span>Our Services</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-panel="process">
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                    <span>Strategic Process</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-panel="projects">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Project and achievement</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-panel="leadership">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>leadership</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-panel="testimonials">
+                    <i class="fa-solid fa-comment-dots"></i>
+                    <span>Testimonials</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-panel="alliances">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Strategic alliances</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-panel="newsPanel">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <span>New & insight</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-panel="faq">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span>Frequent ask question FAQ</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-panel="stats">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Live Statistics</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-panel="preview">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <span>Live Preview</span>
+                </a>
+            </li>
+        </ul>
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Secure Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="page-info">
+                <h1 id="panelTitle">Dashboard Overview</h1>
+                <p id="panelDesc">Welcome back, Admin. Here's what's happening today.</p>
+            </div>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Admin&background=0056b3&color=fff" alt="User">
+                <span>System Administrator</span>
+            </div>
+        </header>
+
+        <!-- Overview Panel -->
+        <section id="overview" class="panel active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-eye"></i></div>
+                    <div class="stat-info">
+                        <h3>94.2k</h3>
+                        <p>Total Views</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #e1f7ec; color: #2ecc71;"><i class="fa-solid fa-message"></i></div>
+                    <div class="stat-info">
+                        <h3>18</h3>
+                        <p>New Inquiries</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #fff4e5; color: #f39c12;"><i class="fa-solid fa-clock"></i></div>
+                    <div class="stat-info">
+                        <h3>4.5m</h3>
+                        <p>Avg. Engagement</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #fde8e8; color: #e74c3c;"><i class="fa-solid fa-bus"></i></div>
+                    <div class="stat-info">
+                        <h3>150+</h3>
+                        <p>Buses Deployed</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> Project Growth & Impact</h3>
+                <canvas id="growthChart" height="100"></canvas>
+            </div>
+        </section>
+
+        <!-- Hero Panel -->
+        <section id="hero" class="panel">
+            <div class="card">
+                <h3 class="card-title">Main Hero Settings</h3>
+                <form id="heroForm">
+                    <div class="form-group">
+                        <label>Main Tagline</label>
+                        <input type="text" name="heroTitle" value="Where Innovation Meets Technology">
+                    </div>
+                    <div class="form-group">
+                        <label>Sub-description</label>
+                        <textarea name="heroDesc" rows="4">Transforming infrastructure with sustainable, cost-effective renewable energy automobiles, intelligent systems, and state-of-the-art designs.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Hero Background Image</label>
+                        <div class="image-upload-preview" id="heroImagePreview" onclick="document.getElementById('heroImageInput').click()">
+                            <img src="assets/images/hero_bg.png" alt="Hero Preview">
+                            <input type="file" id="heroImageInput" name="heroImage" style="display: none;" accept="image/*">
+                        </div>
+                        <small style="color: var(--admin-text-light);">Click the image area to upload a new one.</small>
+                    </div>
+                    <button type="submit" class="btn-save"><i class="fa-solid fa-floppy-disk"></i> Update Hero</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Vision & Values Panel -->
+        <section id="vision" class="panel">
+            <div class="card">
+                <h3 class="card-title">Mission, Vision & Core Values</h3>
+                <form id="visionForm">
+                    <div class="form-group">
+                        <label>Our Mission</label>
+                        <textarea name="mission" rows="3">Deliver sustainable, cost-effective renewable energy automobiles and infrastructure.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Our Vision</label>
+                        <textarea name="vision" rows="3">Become Nigeria's leading provider of innovative technology solutions.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Core Values (Comma separated)</label>
+                        <input type="text" name="values" value="Innovation, Sustainability, Quality, Customer Focus">
+                    </div>
+                    <button type="submit" class="btn-save"><i class="fa-solid fa-floppy-disk"></i> Save Vision & Values</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- About Us Panel -->
+        <section id="about" class="panel">
+            <div class="card">
+                <h3 class="card-title">About Company Page</h3>
+                <form id="aboutForm">
+                    <div class="form-group">
+                        <label>About Heading</label>
+                        <input type="text" name="aboutHeading" value="Pioneering Sustainable Mobility">
+                    </div>
+                    <div class="form-group">
+                        <label>About Content</label>
+                        <textarea name="aboutText" rows="6">At Prefab Technologies Limited, we are dedicated to reshaping the landscape of public transportation, structural design, and information technology. We blend robust engineering with eco-friendly innovations to create smarter, cleaner cities.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>About Image</label>
+                        <div class="image-upload-preview" id="aboutImagePreview">
+                            <img src="assets/images/about_buses.png">
+                            <input type="file" name="aboutImage" style="display: none;" accept="image/*">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-save"><i class="fa-solid fa-floppy-disk"></i> Update About Info</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Services Panel -->
+        <section id="services" class="panel">
+            <div class="card">
+                <h3 class="card-title">Manage Services</h3>
+                <div id="servicesList" class="crud-list" style="margin-bottom: 2rem;"></div>
+                <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--admin-border);">
+                <h4>Add New Service</h4>
+                <form id="serviceAddForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Service Title</label>
+                            <input type="text" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Icon Class (FontAwesome)</label>
+                            <input type="text" name="icon" placeholder="fa-solid fa-leaf" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Description</label>
+                            <textarea name="desc" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-save"><i class="fa-solid fa-plus"></i> Add Service</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Process Panel -->
+        <section id="process" class="panel">
+            <div class="card">
+                <h3 class="card-title">Strategic Process Steps</h3>
+                <div id="processList" class="crud-list" style="margin-bottom: 2rem;"></div>
+                <h4>Add Process Step</h4>
+                <form id="processAddForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Step Title</label>
+                            <input type="text" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Step Number</label>
+                            <input type="text" name="num" placeholder="05" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Description</label>
+                            <textarea name="desc" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-save"><i class="fa-solid fa-plus"></i> Add Step</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Projects Panel -->
+        <section id="projects" class="panel">
+            <div class="card">
+                <h3 class="card-title">Manage Project Portfolio</h3>
+                <div id="projectsList" class="crud-list" style="margin-bottom: 2rem;"></div>
+                <h4>Add New Achievement</h4>
+                <form id="projectAddForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Project Title</label>
+                            <input type="text" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select name="category" required>
+                                <option value="renewable">Renewable</option>
+                                <option value="infrastructure">Infrastructure</option>
+                                <option value="ict">ICT Solutions</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Short Description</label>
+                            <textarea name="desc" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Project Image</label>
+                            <input type="file" name="image" accept="image/*">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-save"><i class="fa-solid fa-plus"></i> Create Project</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Leadership Panel -->
+        <section id="leadership" class="panel">
+            <div class="card">
+                <h3 class="card-title">Corporate Leadership</h3>
+                <div id="leaderList" class="crud-list" style="margin-bottom: 2rem;"></div>
+                <h4>Add Leader</h4>
+                <form id="leaderAddForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Role / Designation</label>
+                            <input type="text" name="role" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Biography</label>
+                            <textarea name="bio" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Headshot Photo</label>
+                            <input type="file" name="image" accept="image/*">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-save"><i class="fa-solid fa-user-plus"></i> Add to Team</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Testimonials Panel -->
+        <section id="testimonials" class="panel">
+            <div class="card">
+                <h3 class="card-title">Client Testimonies</h3>
+                <div id="testimonialList" class="crud-list" style="margin-bottom: 2rem;"></div>
+                <h4>Add Testimony</h4>
+                <form id="testimonialAddForm">
+                    <div class="form-group">
+                        <label>Client Name</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Position / Organization</label>
+                        <input type="text" name="org" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Testimonial Text</label>
+                        <textarea name="text" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-save"><i class="fa-solid fa-plus"></i> Add Testimony</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Alliances Panel -->
+        <section id="alliances" class="panel">
+            <div class="card">
+                <h3 class="card-title">Strategic Alliances & Partners</h3>
+                <div id="allianceList" class="crud-list" style="margin-bottom: 2rem;"></div>
+                <h4>Add Partner Logo</h4>
+                <form id="allianceAddForm">
+                    <div class="form-group">
+                        <label>Partner Name</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Partner Logo</label>
+                        <input type="file" name="image" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn-save"><i class="fa-solid fa-plus"></i> Add Partner</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- News & Insight Panel -->
+        <section id="newsPanel" class="panel">
+            <div class="card">
+                <h3 class="card-title">News Feed & Insights</h3>
+                <div id="newsList" class="crud-list" style="margin-bottom: 2rem;"></div>
+                <h4>Post New Insight</h4>
+                <form id="newsAddForm">
+                    <div class="form-group">
+                        <label>Headline</label>
+                        <input type="text" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="text" name="date" placeholder="APRIL 15, 2026">
+                    </div>
+                    <div class="form-group">
+                        <label>Content Summary</label>
+                        <textarea name="desc" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-save"><i class="fa-solid fa-paper-plane"></i> Publish</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- FAQ Panel -->
+        <section id="faq" class="panel">
+            <div class="card">
+                <h3 class="card-title">FAQ Management</h3>
+                <div id="faqList" class="crud-list" style="margin-bottom: 2rem;"></div>
+                <h4>Add FAQ Item</h4>
+                <form id="faqAddForm">
+                    <div class="form-group">
+                        <label>Question</label>
+                        <input type="text" name="question" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Answer Content</label>
+                        <textarea name="answer" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-save"><i class="fa-solid fa-plus"></i> Add FAQ</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Stats Panel -->
+        <section id="stats" class="panel">
+            <div class="card">
+                <h3 class="card-title">Live Website Statistics</h3>
+                <form id="statsForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Buses Deployed</label>
+                            <input type="number" name="stat1" value="150">
+                        </div>
+                        <div class="form-group">
+                            <label>Projects Completed</label>
+                            <input type="number" name="stat2" value="45">
+                        </div>
+                        <div class="form-group">
+                            <label>States Covered</label>
+                            <input type="number" name="stat3" value="12">
+                        </div>
+                        <div class="form-group">
+                            <label>Carbon Saved (Tons)</label>
+                            <input type="number" name="stat4" value="2500">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-save"><i class="fa-solid fa-save"></i> Save Statistics</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Preview Panel -->
+        <section id="preview" class="panel">
+            <div class="card">
+                <h3 class="card-title">Website Real-time Snapshot</h3>
+                <div class="preview-controls">
+                    <button class="device-btn active" data-width="100%">Desktop</button>
+                    <button class="device-btn" data-width="768px">Tablet</button>
+                    <button class="device-btn" data-width="375px">Mobile</button>
+                </div>
+                <div id="iframeContainer" style="transition: width 0.3s ease; margin: 0 auto; overflow: hidden; background: #eee;"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
