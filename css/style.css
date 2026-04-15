@@ -212,7 +212,7 @@ img {
 .navbar .logo-image img {
   height: 75px;
   width: auto;
-  max-width: 350px;
+  max-width: min(80vw, 300px);
   object-fit: contain;
   transition: var(--transition);
   background-color: rgba(255, 255, 255, 0.95);
@@ -226,6 +226,12 @@ img {
   background-color: transparent;
   padding: 0;
   box-shadow: none;
+}
+
+@media (max-width: 480px) {
+  .navbar .logo-image img {
+    height: 45px;
+  }
 }
 
 .footer-about .logo-image img {
@@ -1726,34 +1732,17 @@ body.dark-mode .navbar.scrolled .theme-toggle {
   transform: rotate(30deg) scale(1.2);
 }
 
-/* Language Switcher */
-.lang-switcher {
+/* Navigation Actions Container */
+.nav-actions {
     display: flex;
-    gap: 10px;
-    margin-left: 20px;
+    align-items: center;
+    gap: 1.5rem;
 }
 
-.lang-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 0.8rem;
-    font-weight: 700;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: var(--transition);
-}
-
-.lang-btn.active, .lang-btn:hover {
-    opacity: 1;
-}
-
-.navbar.scrolled .lang-btn {
-    color: var(--primary-blue);
-}
-
-body.dark-mode .navbar .lang-btn {
-    color: white;
+@media (max-width: 768px) {
+    .nav-actions {
+        gap: 0.8rem;
+    }
 }
 
 /* Canvas Background */

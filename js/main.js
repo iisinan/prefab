@@ -714,51 +714,6 @@ if (heroTitle) {
     // Start typing after a short delay
     setTimeout(typeEffect, 2500);
 }
-// --- 27. Language Switcher Logic ---
-const langBtns = document.querySelectorAll('.lang-btn');
-const translations = {
-    EN: {
-        heroTitle: "Where Innovation Meets Technology",
-        heroDesc: "Transforming infrastructure with sustainable, cost-effective renewable energy automobiles, intelligent systems, and state-of-the-art designs.",
-        aboutTitle: "About Us",
-        servicesTitle: "Our Services"
-    },
-    FR: {
-        heroTitle: "Où l'Innovation Rencontre la Technologie",
-        heroDesc: "Transformer l'infrastructure avec des automobiles à énergie renouvelable durables et rentables, des systèmes intelligents et des conceptions de pointe.",
-        aboutTitle: "À Propos de Nous",
-        servicesTitle: "Nos Services"
-    },
-    HA: {
-        heroTitle: "Inda Innovation Ya Haɗu Da Fasaha",
-        heroDesc: "Canza kayan more rayuwa tare da ɗorewa, motocin makamashi mai sabuntawa mai tsada, tsarin fasaha, da ƙirar zamani.",
-        aboutTitle: "Game da Mu",
-        servicesTitle: "Ayyukanmu"
-    }
-};
-
-if (langBtns.length > 0) {
-    langBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const lang = btn.innerText;
-            langBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            if (translations[lang]) {
-                const hTitle = document.getElementById('heroTitleDisplay');
-                const hDesc = document.getElementById('heroDescDisplay');
-                const aTitle = document.querySelector('#about h2');
-                const sTitle = document.querySelector('#services h2');
-
-                if (hTitle) hTitle.innerText = translations[lang].heroTitle;
-                if (hDesc) hDesc.innerText = translations[lang].heroDesc;
-                if (aTitle) aTitle.innerText = translations[lang].aboutTitle;
-                if (sTitle) sTitle.innerText = translations[lang].servicesTitle;
-            }
-        });
-    });
-}
-
 // --- 28. Parallax Effect for Hero ---
 window.addEventListener('scroll', () => {
     const heroContent = document.querySelector('.hero-content');
