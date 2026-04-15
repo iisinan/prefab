@@ -337,9 +337,23 @@ img {
 
 .hero-btns {
   display: flex;
-  gap: 0.8rem;
+  gap: 1rem;
   justify-content: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 576px) {
+  .hero-btns {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+  }
+  .hero-btns .btn {
+    width: 100%;
+    max-width: 350px;
+    justify-content: center;
+  }
 }
 
 /* Highlight Cards in Hero (overlapping) */
@@ -2292,10 +2306,7 @@ body.dark-mode .slider-dots .dot.active {
 /* ======================== */
 /* Enhanced Hero Buttons */
 /* ======================== */
-.hero-btns {
-    flex-wrap: nowrap;
-}
-
+/* Inherits wrapping from base style */
 .hero-btns .btn {
     font-size: 0.82rem;
     padding: 0.8rem 1.2rem;
