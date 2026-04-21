@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newsPanel: { title: 'News & Insights', desc: 'Publish and manage the latest insights from Prefab Technologies.' },
         faq: { title: 'FAQ Management', desc: 'Control the frequently asked questions center.' },
         stats: { title: 'Live Statistics', desc: 'Update the counters that display your company impact.' },
+        profile: { title: 'Corporate Profile', desc: 'Upload and manage the downloadable company document.' },
         preview: { title: 'Website Snapshot', desc: 'Visualize the impact of your updates.' }
     };
 
@@ -325,4 +326,61 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         });
     }
+    // --- Corporate Profile Logic ---
+    const profileInput = document.getElementById('profileFileInput');
+    const profileArea = document.getElementById('profileUploadArea');
+    const profileStatus = document.getElementById('profileStatus');
+    const profileActions = document.getElementById('profileActions');
+    const removeBtn = document.getElementById('removeProfileBtn');
+
+    if (profileArea && profileInput) {
+        profileArea.onclick = () => profileInput.click();
+        
+        profileInput.onchange = (e) => {
+            const file = e.target.files[0];
+            if (file && file.type === 'application/pdf') {
+                if (file.size > 5 * 1024 * 1024) {
+                    showToast('File too large. Please keep it under 5MB.', 'error');
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const base64 = event.target.result;
+                    localStorage.setItem('custom_corporate_profile', base64);
+                    localStorage.setItem('custom_corporate_profile_name', file.name);
+                    updateProfileUI();
+                    showToast('Corporate profile uploaded successfully!');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                showToast('Please select a valid PDF file.', 'error');
+            }
+        };
+    }
+
+    if (removeBtn) {
+        removeBtn.onclick = () => {
+            if (confirm('Are you sure you want to revert to the default corporate profile?')) {
+                localStorage.removeItem('custom_corporate_profile');
+                localStorage.removeItem('custom_corporate_profile_name');
+                updateProfileUI();
+                showToast('Reverted to default profile.');
+            }
+        };
+    }
+
+    function updateProfileUI() {
+        const saved = localStorage.getItem('custom_corporate_profile');
+        const name = localStorage.getItem('custom_corporate_profile_name') || 'custom_profile.pdf';
+        
+        if (saved) {
+            profileStatus.innerHTML = `<i class="fa-solid fa-circle-check" style="color: var(--admin-secondary);"></i> <span>Currently using: <strong>${name}</strong></span>`;
+            profileActions.style.display = 'flex';
+        } else {
+            profileStatus.innerHTML = `<i class="fa-solid fa-circle-info" style="color: var(--admin-primary);"></i> <span>Using default profile located at assets/downloads/prefab_profile.pdf</span>`;
+            profileActions.style.display = 'none';
+        }
+    }
+
+    updateProfileUI();
 });

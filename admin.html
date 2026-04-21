@@ -116,6 +116,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="#" class="nav-link" data-panel="profile">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Corporate Profile</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="#" class="nav-link" data-panel="preview">
                     <i class="fa-solid fa-laptop-code"></i>
                     <span>Live Preview</span>
@@ -483,6 +489,37 @@
                         </div>
                     </div>
                     <button type="submit" class="btn-save"><i class="fa-solid fa-save"></i> Save Statistics</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Corporate Profile Panel -->
+        <section id="profile" class="panel">
+            <div class="card">
+                <h3 class="card-title"><i class="fa-solid fa-file-pdf"></i> Corporate Profile Document</h3>
+                <p style="margin-bottom: 2rem; color: var(--admin-text-light);">Upload the PDF version of your corporate profile. This will update the "Corporate Profile" download links across the website.</p>
+                
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label>Current Status</label>
+                        <div id="profileStatus" style="padding: 1rem; background: #f8fafc; border-radius: 8px; border: 1px solid var(--admin-border); margin-bottom: 1rem;">
+                            <i class="fa-solid fa-circle-info" style="color: var(--admin-primary);"></i> <span>Using default profile located at assets/downloads/prefab_profile.pdf</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload New PDF Profile</label>
+                        <div class="image-upload-preview" id="profileUploadArea" style="height: 150px; border-style: dashed; flex-direction: row; gap: 15px;">
+                            <i class="fa-solid fa-cloud-arrow-up" style="font-size: 2rem;"></i>
+                            <div style="text-align: left;">
+                                <strong style="display: block; color: var(--admin-text);">Click to select PDF</strong>
+                                <small>Max suggested size: 4MB (Higher sizes may cause browser lag)</small>
+                            </div>
+                            <input type="file" id="profileFileInput" accept=".pdf" style="display: none;">
+                        </div>
+                    </div>
+                    <div id="profileActions" style="display: none; margin-top: 1rem; gap: 10px;">
+                        <button type="button" id="removeProfileBtn" class="btn-save" style="background: #e74c3c;"><i class="fa-solid fa-trash"></i> Reset to Default</button>
+                    </div>
                 </form>
             </div>
         </section>

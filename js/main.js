@@ -917,6 +917,22 @@ const applyAdminSettings = () => {
             if (el && val) el.setAttribute('data-target', val);
         });
     }
+
+    // 12. Corporate Profile
+    const customProfile = localStorage.getItem('custom_corporate_profile');
+    if (customProfile) {
+        const profileLinks = document.querySelectorAll('a');
+        profileLinks.forEach(link => {
+            const isProfileLink = link.innerText.toLowerCase().includes('corporate profile') || 
+                                 link.innerText.toLowerCase().includes('download profile') ||
+                                 link.getAttribute('href') === 'assets/downloads/prefab_profile.pdf';
+            
+            if (isProfileLink) {
+                link.href = customProfile;
+                link.setAttribute('download', localStorage.getItem('custom_corporate_profile_name') || 'Prefab_Corporate_Profile.pdf');
+            }
+        });
+    }
 };
 
 window.addEventListener('DOMContentLoaded', applyAdminSettings);

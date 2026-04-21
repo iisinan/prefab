@@ -1329,26 +1329,20 @@ textarea.form-control {
     gap: 1rem;
   }
   .highlight-card {
-    display: flex;
-    align-items: center;
-    text-align: left;
-    gap: 1.5rem;
-    padding: 1.5rem 2rem;
-    border-top: none;
-    border-left: 4px solid var(--primary-green);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-top: 4px solid var(--primary-green);
   }
   .highlight-card i {
     font-size: 2rem;
-    margin-bottom: 0;
-    flex-shrink: 0;
+    margin-bottom: 0.8rem;
   }
   .highlight-card h3 {
     font-size: 1.1rem;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   .highlight-card p {
     font-size: 0.85rem;
-    margin: 0;
   }
   .about {
     padding-top: 5rem;
